@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+char str(char *ptr)
+{
+
+    char w[20][20], l[20],s[20];
+    int i=0,j=0,k;
+    int length=0;
+    for(k=0;ptr[k]!='\0';k++)
+    {
+        if(ptr[k]!=32 && ptr[k]!='\0')
+        {
+            w[i][j++]=ptr[k];
+        }
+        else
+        {
+            w[i][j]='\0';
+            i++;
+            j=0;
+        }
+    }
+    length=i+1;
+    strcpy(l,w[0]);
+    strcpy(s,w[0]);
+    for(k=0;k<length;k++)
+    {
+        if(strlen(l)<strlen(w[k]))
+        {
+            strcpy(l,w[k]);
+        }
+        if(strlen(s)>strlen(w[k]))
+        {
+            strcpy(s,w[k]);
+        }
+    }
+    printf("the big string:%s\n",l);
+    printf("the small string:%s\n",s);
+    int p=strlen(l);
+    int q=strlen(s);
+    printf("the length of big str:%d\n",p);
+    printf("the length of small:%d\n",q);
+}
+int main()
+{
+    char u[]="chkiran kumar chappiti";
+    int g=strlen(u);
+    char *ptr=(char*)malloc(g*sizeof(char));
+    ptr=u;
+    char (*fptr)(char *)=str;
+    fptr(ptr);
+}
